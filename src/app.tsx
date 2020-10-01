@@ -30,11 +30,19 @@ export function App() {
 
       <div className="questions">
 
-        <div className="question">
+        <form className="question"
+          onSubmit={(e) => {                                       
+            e.preventDefault();                                       
+            checkIfTheyAreRight();                               
+          }} 
+        >
 
           <p className="text">Can you guess one of our favorite animals?</p>
-          <input onChange={(e) => setCurrentGuess(e.target.value)}/>
-          <button onClick={checkIfTheyAreRight}>GUESS</button>
+          <input
+            value={currentGuess}
+            onChange={(e) => setCurrentGuess(e.target.value)}
+          />
+          <button type="submit">GUESS</button>
 
           {
             guessedCorrectly === true ? <p className="rightGuess">You got it right!</p> :
@@ -48,7 +56,7 @@ export function App() {
             Wrong guess count: {wrongGuesses}
           </p>
 
-        </div>
+        </form>
       
       
       </div>

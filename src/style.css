@@ -56,6 +56,15 @@ body {
   background: #43A047;
 }
 
+.questions button:active {
+  transform: translateY(4px);
+}
+
+.questions input[type=submit]:active button {
+  transform: translateY(4px);
+}
+
+
 .questions button:disabled {
   background: grey;
   cursor: not-allowed;
@@ -86,6 +95,6 @@ body {
 
 .results {
   padding: 20px;
-  margin: 10px;
-  border: 1px solid blue;
+  margin: 10px 0px;
+  background: #E8EEEC;
 }
