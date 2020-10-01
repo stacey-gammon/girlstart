@@ -1,0 +1,91 @@
+
+
+body {
+  background: white;
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;      
+}
+
+.login-page {
+  text-align: center;
+  padding: 8% 0 0;
+  margin: auto;
+}
+
+.questions {
+  position: relative;
+  font-size: 26px;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.questions input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.questions button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  border: 3px solid black;
+  width: 100%;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 20px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+.questions button:hover,.questions button:active,.questions button:focus {
+  background: #43A047;
+}
+
+.questions button:disabled {
+  background: grey;
+  cursor: not-allowed;
+}
+
+.questions .message {
+  color: #b3b3b3;
+}
+
+.question {
+  padding: 5px;
+}
+
+.question .text {
+  margin: 0px 0px 15px 0px;
+}
+
+
+.question .rightGuess {
+  color: green;
+  margin: 15px 0px 0px 0px;
+}
+
+.question .wrongGuess {
+  color: red;
+  margin: 15px 0px 0px 0px;
+}
+
+.results {
+  padding: 20px;
+  margin: 10px;
+  border: 1px solid blue;
+}
