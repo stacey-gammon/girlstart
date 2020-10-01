@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "start": "npx webpack"
+    "start": "npx webpack",
+    "watch": "npx webpack --watch"
   },
   "devDependencies": {
     "@types/node": "^14.11.2",
