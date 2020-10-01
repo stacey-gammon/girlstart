@@ -28575,42 +28575,71 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function App() {
-    var favoriteAnimals = [
+    // Type in right answers here!
+    var correctAnswers = [
         "frog"
     ];
+    // These are our "variables".
+    // This will store whether or not they guessed correctly. If it's "undefined" it means
+    // they haven't made a guess yet.
     var _a = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(undefined), guessedCorrectly = _a[0], setGuessedCorrectly = _a[1];
+    // This is where we will store their current guess - what they are typing into the
+    // input box.
     var _b = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''), currentGuess = _b[0], setCurrentGuess = _b[1];
+    // Lets keep track of how many times they guess wrong!
     var _c = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0), wrongGuesses = _c[0], setWrongGuesses = _c[1];
-    var _d = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0), correctGuesses = _d[0], setCorrectGuesses = _d[1];
+    // These are our "Functions"
+    // This function will set the guessedCorrectly variable to true if the current guess is
+    // correct, otherwise it'll set it to false.
     var checkIfTheyAreRight = function () {
-        if (favoriteAnimals.find(function (animal) { return animal === currentGuess; })) {
+        if (correctAnswers.find(function (correctGuess) { return correctGuess === currentGuess; })) {
             setGuessedCorrectly(true);
-            setCorrectGuesses(correctGuesses + 1);
+            setWrongGuesses(0);
         }
         else {
             setGuessedCorrectly(false);
             setWrongGuesses(wrongGuesses + 1);
         }
     };
+    // This function returns a message only if the user has at least one wrong guess.
+    var renderWrongGuessCount = function () {
+        if (wrongGuesses === 0) {
+            return undefined;
+        }
+        else {
+            return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", { className: "wrongGuessCount" },
+                "Wrong guess count: ",
+                wrongGuesses));
+        }
+    };
+    // This function returns a message based on whether they guessed correctly or not.
+    // If they haven't guessed yet, it returns nothing.
+    var renderResults = function () {
+        // If this is undefined (not true, nor false), return nothing. They haven't guessed yet!
+        if (guessedCorrectly === undefined) {
+            return undefined;
+        }
+        if (guessedCorrectly === true) {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", { className: "rightGuess" }, "You got it right!");
+        }
+        if (guessedCorrectly === false) {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", { className: "wrongGuess" }, "You got it wrong");
+        }
+    };
     return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { className: "login-page" },
         react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Welcome to the Girlstart Guessing Game!"),
         react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { className: "questions" },
-            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", { className: "question", onSubmit: function (e) {
-                    e.preventDefault();
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", { className: "text" }, "Can you guess one of our favorite animals?"),
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", { value: currentGuess, 
+                // Every time they press a new letter, save the current input text.
+                onChange: function (e) { return setCurrentGuess(e.target.value); }, 
+                // This makes it so pressing "Enter" in the input box makes a guess.
+                onKeyPress: function (e) { if (e.key === 'Enter') {
                     checkIfTheyAreRight();
-                } },
-                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", { className: "text" }, "Can you guess one of our favorite animals?"),
-                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", { value: currentGuess, onChange: function (e) { return setCurrentGuess(e.target.value); } }),
-                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", { type: "submit" }, "GUESS"),
-                guessedCorrectly === true ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", { className: "rightGuess" }, "You got it right!") :
-                    guessedCorrectly === false ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", { className: "wrongGuess" }, "You got it wrong") :
-                        null,
-                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", { className: "results" },
-                    "Correct guess count: ",
-                    correctGuesses,
-                    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null),
-                    "Wrong guess count: ",
-                    wrongGuesses)))));
+                } } }),
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", { onClick: checkIfTheyAreRight }, "GUESS"),
+            renderResults(),
+            renderWrongGuessCount())));
 }
 
 
@@ -28925,7 +28954,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(false);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, "\n\nbody {\n  background: white;\n  font-family: \"Roboto\", sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;      \n}\n\n.login-page {\n  text-align: center;\n  padding: 8% 0 0;\n  margin: auto;\n}\n\n.questions {\n  position: relative;\n  font-size: 26px;\n  z-index: 1;\n  background: #FFFFFF;\n  max-width: 400px;\n  margin: 0 auto;\n  padding: 45px;\n  text-align: center;\n  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\n}\n\n.questions input {\n  font-family: \"Roboto\", sans-serif;\n  outline: 0;\n  background: #f2f2f2;\n  width: 100%;\n  border: 0;\n  margin: 0 0 15px;\n  padding: 15px;\n  box-sizing: border-box;\n  font-size: 16px;\n}\n\n.questions button {\n  font-family: \"Roboto\", sans-serif;\n  text-transform: uppercase;\n  outline: 0;\n  background: #4CAF50;\n  border: 3px solid black;\n  width: 100%;\n  padding: 15px;\n  color: #FFFFFF;\n  font-size: 20px;\n  -webkit-transition: all 0.3 ease;\n  transition: all 0.3 ease;\n  cursor: pointer;\n}\n\n.questions button:hover,.questions button:active,.questions button:focus {\n  background: #43A047;\n}\n\n.questions button:active {\n  transform: translateY(4px);\n}\n\n.questions input[type=submit]:active button {\n  transform: translateY(4px);\n}\n\n\n.questions button:disabled {\n  background: grey;\n  cursor: not-allowed;\n}\n\n.questions .message {\n  color: #b3b3b3;\n}\n\n.question {\n  padding: 5px;\n}\n\n.question .text {\n  margin: 0px 0px 15px 0px;\n}\n\n\n.question .rightGuess {\n  color: green;\n  margin: 15px 0px 0px 0px;\n}\n\n.question .wrongGuess {\n  color: red;\n  margin: 15px 0px 0px 0px;\n}\n\n.results {\n  padding: 20px;\n  margin: 10px 0px;\n  background: #E8EEEC;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.i, "\n\nbody {\n  background: white;\n  font-family: \"Roboto\", sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;      \n}\n\n.login-page {\n  text-align: center;\n  padding: 8% 0 0;\n  margin: auto;\n}\n\n.questions {\n  position: relative;\n  font-size: 26px;\n  z-index: 1;\n  background: #FFFFFF;\n  max-width: 400px;\n  margin: 0 auto;\n  padding: 45px;\n  text-align: center;\n  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\n}\n\n.questions input {\n  font-family: \"Roboto\", sans-serif;\n  outline: 0;\n  background: #f2f2f2;\n  width: 100%;\n  border: 0;\n  margin: 0 0 15px;\n  padding: 15px;\n  box-sizing: border-box;\n  font-size: 16px;\n}\n\n.questions button {\n  font-family: \"Roboto\", sans-serif;\n  text-transform: uppercase;\n  outline: 0;\n  background: #4CAF50;\n  border: 3px solid black;\n  width: 100%;\n  padding: 15px;\n  color: #FFFFFF;\n  font-size: 20px;\n  -webkit-transition: all 0.3 ease;\n  transition: all 0.3 ease;\n  cursor: pointer;\n}\n\n.questions button:hover,.questions button:active,.questions button:focus {\n  background: #43A047;\n}\n\n.questions button:active {\n  transform: translateY(4px);\n}\n\n.questions input[type=submit]:active button {\n  transform: translateY(4px);\n}\n\n\n.questions button:disabled {\n  background: grey;\n  cursor: not-allowed;\n}\n\n.questions .message {\n  color: #b3b3b3;\n}\n\n.question {\n  padding: 5px;\n}\n\n.question .text {\n  margin: 0px 0px 15px 0px;\n}\n\n\n.rightGuess {\n  color: green;\n  margin: 15px 0px 0px 0px;\n}\n\n.wrongGuess {\n  color: red;\n  margin: 15px 0px 0px 0px;\n}\n\n.wrongGuessCount {\n  padding: 20px;\n  margin: 10px 0px;\n  background: #9f3838;\n  color: white;\n}", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 

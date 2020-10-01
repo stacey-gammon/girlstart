@@ -83,18 +83,19 @@ body {
 }
 
 
-.question .rightGuess {
+.rightGuess {
   color: green;
   margin: 15px 0px 0px 0px;
 }
 
-.question .wrongGuess {
+.wrongGuess {
   color: red;
   margin: 15px 0px 0px 0px;
 }
 
-.results {
+.wrongGuessCount {
   padding: 20px;
   margin: 10px 0px;
-  background: #E8EEEC;
+  background: #9f3838;
+  color: white;
 }
