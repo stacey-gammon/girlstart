@@ -28603,7 +28603,7 @@ function App() {
     // This function will set the guessedCorrectly variable to true if the current guess is
     // correct, otherwise it'll set it to false.
     var checkIfTheyAreRight = function () {
-        if (correctAnswers.find(function (correctGuess) { return correctGuess === currentGuess; })) {
+        if (correctAnswers.find(function (correctGuess) { return correctGuess === currentGuess.toLowerCase(); })) {
             setGuessedCorrectly(true);
             setWrongGuesses(0);
         }

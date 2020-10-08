@@ -38,7 +38,7 @@ export function App() {
   // This function will set the guessedCorrectly variable to true if the current guess is
   // correct, otherwise it'll set it to false.
   const checkIfTheyAreRight = () => {
-    if (correctAnswers.find(correctGuess => correctGuess === currentGuess)) {
+    if (correctAnswers.find(correctGuess => correctGuess === currentGuess.toLowerCase())) {
       setGuessedCorrectly(true);
       setWrongGuesses(0);
     } else {
