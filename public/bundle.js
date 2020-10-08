@@ -28577,7 +28577,18 @@ __webpack_require__.r(__webpack_exports__);
 function App() {
     // Type in right answers here!
     var correctAnswers = [
-        "frog"
+        "frog",
+        "dog",
+        "fox",
+        "puppy",
+        "cheetah",
+        "zebra",
+        "wolf",
+        "killer whale",
+        "panda",
+        "cat",
+        "elephant",
+        "dolphin"
     ];
     // These are our "variables".
     // This will store whether or not they guessed correctly. If it's "undefined" it means
@@ -28601,15 +28612,27 @@ function App() {
             setWrongGuesses(wrongGuesses + 1);
         }
     };
+    var noMoreGuessesForYou = function () {
+        return wrongGuesses > 5;
+    };
     // This function returns a message only if the user has at least one wrong guess.
     var renderWrongGuessCount = function () {
         if (wrongGuesses === 0) {
             return undefined;
         }
         else {
+            var wrongCountMessage = "Wrong guess count: " + wrongGuesses;
+            var extraMessage = "";
+            if (noMoreGuessesForYou()) {
+                extraMessage = "You didn't get it right! You got it wrong too many times. No more chances for you!";
+            }
+            else if (wrongGuesses > 3) {
+                extraMessage = "HINT: The first letters of our favorite animals are f, d, p, c, k, w, z, e.";
+            }
             return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", { className: "wrongGuessCount" },
-                "Wrong guess count: ",
-                wrongGuesses));
+                wrongCountMessage,
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null),
+                extraMessage));
         }
     };
     // This function returns a message based on whether they guessed correctly or not.
@@ -28637,7 +28660,7 @@ function App() {
                 onKeyPress: function (e) { if (e.key === 'Enter') {
                     checkIfTheyAreRight();
                 } } }),
-            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", { onClick: checkIfTheyAreRight }, "GUESS"),
+            react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", { disabled: noMoreGuessesForYou(), onClick: checkIfTheyAreRight }, "GUESS!"),
             renderResults(),
             renderWrongGuessCount())));
 }
@@ -28954,7 +28977,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(false);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, "\n\nbody {\n  background: white;\n  font-family: \"Roboto\", sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;      \n}\n\n.login-page {\n  text-align: center;\n  padding: 8% 0 0;\n  margin: auto;\n}\n\n.questions {\n  position: relative;\n  font-size: 26px;\n  z-index: 1;\n  background: #FFFFFF;\n  max-width: 400px;\n  margin: 0 auto;\n  padding: 45px;\n  text-align: center;\n  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\n}\n\n.questions input {\n  font-family: \"Roboto\", sans-serif;\n  outline: 0;\n  background: #f2f2f2;\n  width: 100%;\n  border: 0;\n  margin: 0 0 15px;\n  padding: 15px;\n  box-sizing: border-box;\n  font-size: 16px;\n}\n\n.questions button {\n  font-family: \"Roboto\", sans-serif;\n  text-transform: uppercase;\n  outline: 0;\n  background: #4CAF50;\n  border: 3px solid black;\n  width: 100%;\n  padding: 15px;\n  color: #FFFFFF;\n  font-size: 20px;\n  -webkit-transition: all 0.3 ease;\n  transition: all 0.3 ease;\n  cursor: pointer;\n}\n\n.questions button:hover,.questions button:active,.questions button:focus {\n  background: #43A047;\n}\n\n.questions button:active {\n  transform: translateY(4px);\n}\n\n.questions input[type=submit]:active button {\n  transform: translateY(4px);\n}\n\n\n.questions button:disabled {\n  background: grey;\n  cursor: not-allowed;\n}\n\n.questions .message {\n  color: #b3b3b3;\n}\n\n.question {\n  padding: 5px;\n}\n\n.question .text {\n  margin: 0px 0px 15px 0px;\n}\n\n\n.rightGuess {\n  color: green;\n  margin: 15px 0px 0px 0px;\n}\n\n.wrongGuess {\n  color: red;\n  margin: 15px 0px 0px 0px;\n}\n\n.wrongGuessCount {\n  padding: 20px;\n  margin: 10px 0px;\n  background: #9f3838;\n  color: white;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.i, "\n\nbody {\n  background: rgb(228, 180, 228);\n  font-family: \"Roboto\", sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;      \n}\n\n.login-page {\n  text-align: center;\n  padding: 8% 0 0;\n  margin: auto;\n}\n\n.questions {\n  position: relative;\n  font-size: 26px;\n  z-index: 1;\n  background: #FFFFFF;\n  max-width: 400px;\n  margin: 0 auto;\n  padding: 45px;\n  text-align: center;\n  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);\n}\n\n.questions input {\n  font-family: \"Roboto\", sans-serif;\n  outline: 0;\n  background: #f2f2f2;\n  width: 100%;\n  border: 0;\n  margin: 0 0 15px;\n  padding: 15px;\n  box-sizing: border-box;\n  font-size: 16px;\n}\n\n.questions button {\n  font-family: \"Roboto\", sans-serif;\n  text-transform: uppercase;\n  outline: 0;\n  background: #fa0aaa;\n  border: 3px solid black;\n  width: 100%;\n  padding: 15px;\n  color: #FFFFFF;\n  font-size: 20px;\n  -webkit-transition: all 0.3 ease;\n  transition: all 0.3 ease;\n  cursor: pointer;\n}\n\n.questions button:hover,.questions button:active,.questions button:focus {\n  background: #43A047;\n}\n\n.questions button:active {\n  transform: translateY(4px);\n}\n\n.questions input[type=submit]:active button {\n  transform: translateY(4px);\n}\n\n\n.questions button:disabled {\n  background: yellow;\n  cursor: not-allowed;\n}\n\n.questions .message {\n  color: #5d18ff;\n}\n\n.question {\n  padding: 5px;\n}\n\n.question .text {\n  margin: 0px 0px 15px 0px;\n}\n\n\n.rightGuess {\n  color: teal;\n  margin: 15px 0px 0px 0px;\n}\n\n.wrongGuess {\n  color: red;\n  margin: 15px 0px 0px 0px;\n}\n\n.wrongGuessCount {\n  padding: 20px;\n  margin: 10px 0px;\n  background: #9f3838;\n  color: white;\n}", ""]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 

@@ -5,7 +5,18 @@ export function App() {
 
   // Type in right answers here!
   const correctAnswers = [
-    "frog"
+    "frog",
+    "dog",
+    "fox",
+    "puppy",
+    "cheetah",
+    "zebra",
+    "wolf",
+    "killer whale",
+    "panda",
+    "cat",
+    "elephant",
+    "dolphin"
   ]; 
 
   // These are our "variables".
@@ -36,14 +47,27 @@ export function App() {
     }
   }
 
+  const noMoreGuessesForYou = () => {
+    return wrongGuesses > 5;
+  }
+
   // This function returns a message only if the user has at least one wrong guess.
   const renderWrongGuessCount = () => {
     if (wrongGuesses === 0) {
       return undefined;
     } else {
+      const wrongCountMessage = `Wrong guess count: ${wrongGuesses}`;
+      let extraMessage = "";
+      if (noMoreGuessesForYou()) {
+        extraMessage = "You didn't get it right! You got it wrong too many times. No more chances for you!";
+      } else if (wrongGuesses > 3) {
+        extraMessage = "HINT: The first letters of our favorite animals are f, d, p, c, k, w, z, e.";
+      }
       return (
        <p className="wrongGuessCount">
-        Wrong guess count: {wrongGuesses}
+        {wrongCountMessage}
+        <br/>
+        {extraMessage}
       </p>
       )
     }
@@ -86,13 +110,13 @@ export function App() {
             onKeyPress={(e) => { if (e.key === 'Enter') { checkIfTheyAreRight(); } } }
           />
 
-          <button onClick={checkIfTheyAreRight}>GUESS</button>
+          <button disabled={noMoreGuessesForYou()} onClick={checkIfTheyAreRight}>GUESS!</button>
 
           {renderResults()}
           {renderWrongGuessCount()}
         
         </div>
       
-    </div>
+    </div> 
   );
 }
