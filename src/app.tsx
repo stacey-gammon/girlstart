@@ -48,7 +48,7 @@ export function App() {
   }
 
   const noMoreGuessesForYou = () => {
-    return wrongGuesses > 5;
+    return wrongGuesses >= 5;
   }
 
   // This function returns a message only if the user has at least one wrong guess.
@@ -59,15 +59,15 @@ export function App() {
       const wrongCountMessage = `Wrong guess count: ${wrongGuesses}`;
       let extraMessage = "";
       if (noMoreGuessesForYou()) {
-        extraMessage = "You didn't get it right! You got it wrong too many times. No more chances for you!";
-      } else if (wrongGuesses > 3) {
+        extraMessage = "You got it wrong too many times! No more chances for you!";
+      } else if (wrongGuesses >= 3) {
         extraMessage = "HINT: The first letters of our favorite animals are f, d, p, c, k, w, z, e.";
       }
       return (
-       <p className="wrongGuessCount">
-        {wrongCountMessage}
+        <p>
+         <div className="wrongGuessCount">{wrongCountMessage}</div>
         <br/>
-        {extraMessage}
+         {extraMessage}
       </p>
       )
     }

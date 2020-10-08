@@ -28613,7 +28613,7 @@ function App() {
         }
     };
     var noMoreGuessesForYou = function () {
-        return wrongGuesses > 5;
+        return wrongGuesses >= 5;
     };
     // This function returns a message only if the user has at least one wrong guess.
     var renderWrongGuessCount = function () {
@@ -28624,13 +28624,13 @@ function App() {
             var wrongCountMessage = "Wrong guess count: " + wrongGuesses;
             var extraMessage = "";
             if (noMoreGuessesForYou()) {
-                extraMessage = "You didn't get it right! You got it wrong too many times. No more chances for you!";
+                extraMessage = "You got it wrong too many times! No more chances for you!";
             }
-            else if (wrongGuesses > 3) {
+            else if (wrongGuesses >= 3) {
                 extraMessage = "HINT: The first letters of our favorite animals are f, d, p, c, k, w, z, e.";
             }
-            return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", { className: "wrongGuessCount" },
-                wrongCountMessage,
+            return (react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null,
+                react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", { className: "wrongGuessCount" }, wrongCountMessage),
                 react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null),
                 extraMessage));
         }
