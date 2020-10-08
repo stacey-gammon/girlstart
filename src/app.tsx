@@ -93,7 +93,7 @@ export function App() {
   return (
     <div className="login-page">
       
-      <h1>Welcome to the Girlstart Guessing Game!</h1>
+      <h1 className="header-message">Welcome to the Girlstart Guessing Game!</h1>
 
       <div className="questions">
 

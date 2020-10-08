@@ -11,6 +11,11 @@ body {
   text-align: center;
   padding: 8% 0 0;
   margin: auto;
+  color: green;
+}
+
+.header-message {
+  color: white;
 }
 
 .questions {
@@ -28,7 +33,8 @@ body {
 .questions input {
   font-family: "Roboto", sans-serif;
   outline: 0;
-  background: #f2f2f2;
+  background: orange;
+  color: white;
   width: 100%;
   border: 0;
   margin: 0 0 15px;
@@ -41,8 +47,8 @@ body {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: #fa0aaa;
-  border: 3px solid black;
+  background: #3700ff;
+  border: 5px solid silver;
   width: 100%;
   padding: 15px;
   color: #FFFFFF;
@@ -53,7 +59,7 @@ body {
 }
 
 .questions button:hover,.questions button:active,.questions button:focus {
-  background: #43A047;
+  background: #3700ff;
 }
 
 .questions button:active {
